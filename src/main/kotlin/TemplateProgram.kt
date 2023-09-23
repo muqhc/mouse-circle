@@ -1,6 +1,6 @@
-import org.openrndr.applicationAsync
-import org.openrndr.color.ColorRGBa
-import org.openrndr.color.rgb
+import org.openrndr.*
+import org.openrndr.color.*
+import org.openrndr.events.*
 import kotlin.math.cos
 
 suspend fun main() = applicationAsync {

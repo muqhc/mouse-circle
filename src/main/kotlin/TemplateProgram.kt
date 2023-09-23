@@ -24,7 +24,7 @@ suspend fun main() = applicationAsync {
                 (0..tx).forEach { x -> (0..ty).forEach { y ->
                     drawer.circle(
                         x.toDouble(),y.toDouble(),
-                        min(40,((x-it.x).pow(2)+(y-it.y).pow(2))/400).toDouble()
+                        min(40.toDouble(),(((x-it.x).pow(2)+(y-it.y).pow(2))/400).toDouble()).toDouble()
                     )
                 }}
             }

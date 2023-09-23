@@ -20,6 +20,7 @@ suspend fun main() = applicationAsync {
             drawPosition?.let {
                 drawer.circle(it.x,it.y, 100.0 + cos(seconds) * 40.0)
             }
+            drawPosition = null
         }
     }
 }

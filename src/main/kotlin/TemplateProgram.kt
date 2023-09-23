@@ -17,14 +17,14 @@ suspend fun main() = applicationAsync {
         val ty = max(width,height)/80
 
         extend {
-            val background = rgb("#000000")
+            val background = rgb("#ff0000")
             drawer.clear(background)
             drawer.fill = ColorRGBa.WHITE
             drawPosition?.let {
                 (0..tx).forEach { x -> (0..ty).forEach { y ->
                     drawer.circle(
                         x.toDouble()*80,y.toDouble()*80,
-                        min(40.toDouble(),(((x-it.x).pow(2)+(y-it.y).pow(2))/400).toDouble()).toDouble()
+                        min(40.toDouble(),sqrt(((x-it.x).pow(2)+(y-it.y).pow(2))/160).toDouble()).toDouble()
                     )
                 }}
             }

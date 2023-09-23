@@ -5,11 +5,19 @@ import kotlin.math.cos
 
 suspend fun main() = applicationAsync {
     program {
+
+        var drawPosition: Vector2? = null
+
+        mouse.moved.listen {
+            drawPosition = it.position
+        }
+
         extend {
             val a = rgb("#ff0000")
             drawer.clear(a)
             drawer.fill = ColorRGBa.WHITE
-            drawer.circle(width / 2.0, height / 2.0, 100.0 + cos(seconds) * 40.0)
+            if (drawPosition != null)
+                drawer.circle(drawPosition, 100.0 + cos(seconds) * 40.0)
         }
     }
 }

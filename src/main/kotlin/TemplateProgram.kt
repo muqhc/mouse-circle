@@ -17,8 +17,9 @@ suspend fun main() = applicationAsync {
             val a = rgb("#ff0000")
             drawer.clear(a)
             drawer.fill = ColorRGBa.WHITE
-            if (drawPosition != null)
-                drawer.circle(drawPosition.x,drawPosition.y, 100.0 + cos(seconds) * 40.0)
+            drawPosition?.let {
+                drawer.circle(it.x,it.y, 100.0 + cos(seconds) * 40.0)
+            }
         }
     }
 }

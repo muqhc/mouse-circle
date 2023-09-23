@@ -1,6 +1,7 @@
 import org.openrndr.*
 import org.openrndr.color.*
 import org.openrndr.events.*
+import org.openrndr.math.*
 import kotlin.math.cos
 
 suspend fun main() = applicationAsync {

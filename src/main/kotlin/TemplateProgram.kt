@@ -2,7 +2,7 @@ import org.openrndr.*
 import org.openrndr.color.*
 import org.openrndr.events.*
 import org.openrndr.math.*
-import kotlin.math.cos
+import kotlin.math.*
 
 suspend fun main() = applicationAsync {
     program {
@@ -13,14 +13,18 @@ suspend fun main() = applicationAsync {
             drawPosition = it.position
         }
 
+        val tx = max(width,height)/80
+        val ty = max(width,height)/80
+
         extend {
-            val a = rgb("#ff0000")
-            drawer.clear(a)
+            val background = rgb("#000000")
+            drawer.clear(background)
             drawer.fill = ColorRGBa.WHITE
             drawPosition?.let {
-                drawer.circle(it.x,it.y, 100.0 + cos(seconds) * 40.0)
+                (0..tx).forEach { x -> (0..ty).forEach { y ->
+                    drawer.circle(x,y,min(40,((x-it.x).pow(2)+(y-it.y).pow(2))/400))
+                }}
             }
-            drawPosition = null
         }
     }
 }

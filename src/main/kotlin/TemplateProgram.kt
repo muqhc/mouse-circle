@@ -22,7 +22,10 @@ suspend fun main() = applicationAsync {
             drawer.fill = ColorRGBa.WHITE
             drawPosition?.let {
                 (0..tx).forEach { x -> (0..ty).forEach { y ->
-                    drawer.circle(x,y,min(40,((x-it.x).pow(2)+(y-it.y).pow(2))/400))
+                    drawer.circle(
+                        x.toDouble(),y.toDouble(),
+                        min(40,((x-it.x).pow(2)+(y-it.y).pow(2))/400).toDouble()
+                    )
                 }}
             }
         }

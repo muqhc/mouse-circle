@@ -18,7 +18,7 @@ suspend fun main() = applicationAsync {
             drawer.clear(a)
             drawer.fill = ColorRGBa.WHITE
             if (drawPosition != null)
-                drawer.circle(drawPosition, 100.0 + cos(seconds) * 40.0)
+                drawer.circle(drawPosition.x,drawPosition.y, 100.0 + cos(seconds) * 40.0)
         }
     }
 }

@@ -2,7 +2,18 @@ import org.openrndr.*
 import org.openrndr.color.*
 import org.openrndr.events.*
 import org.openrndr.math.*
+import org.openrndr.extra.compositor.*
+import org.openrndr.extra.fx.blend.Add
+import org.openrndr.extra.fx.blend.Normal
+import org.openrndr.extra.fx.blur.ApproximateGaussianBlur
+import org.openrndr.extra.fx.distort.HorizontalWave
+import org.openrndr.extra.fx.distort.VerticalWave
+import org.openrndr.extra.fx.shadow.DropShadow
+import org.openrndr.shape.Rectangle
+import org.openrndr.writer
 import kotlin.math.*
+
+val mainColor = ColorRGBa.ORANGE
 
 suspend fun main() = applicationAsync {
     program {
@@ -13,21 +24,31 @@ suspend fun main() = applicationAsync {
             drawPosition = it.position
         }
 
-        val tx = max(width,height)/80
-        val ty = max(width,height)/80
+        val composite = compose {
+            draw {
+                drawer.fill = mainColor
+                drawer.stroke = null
+                drawer.circle(drawPosition, 175.0)
+            }
+            
+            layer {
+                blend(Add()) {
+                    clip = true
+                }
+                draw {
+                    drawer.fill = mainColor
+                    drawer.stroke = null
+                    drawer.circle(drawPosition*(-1.0)+Vector2(width.toDouble(),height.toDouble()), 150.0)
+                }
+                post(ApproximateGaussianBlur()) {
+                    window = 25
+                    sigma = 10.00
+                }
+            }
+        }
 
         extend {
-            val background = rgb("#ff0000")
-            drawer.clear(background)
-            drawer.fill = ColorRGBa.WHITE
-            drawPosition?.let {
-                (0..tx).forEach { x -> (0..ty).forEach { y ->
-                    drawer.circle(
-                        x.toDouble()*80,y.toDouble()*80,
-                        min(40.toDouble(),sqrt(((x-it.x).pow(2)+(y-it.y).pow(2))/160).toDouble()).toDouble()
-                    )
-                }}
-            }
+            
         }
     }
 }

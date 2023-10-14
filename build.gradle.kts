@@ -8,10 +8,10 @@ version = "1.0-SNAPSHOT"
 
 /*  Which additional multiplatform (ORX) libraries should be added to this project. */
 val orxFeatures = setOf<String>(
-//    "orx-camera",
-//    "orx-color",
-//    "orx-compositor",
-//    "orx-easing",
+    "orx-camera",
+    "orx-color",
+    "orx-compositor",
+    "orx-easing",
     "orx-fx",
 //    "orx-gradient-descent",
     "orx-image-fit",
@@ -19,8 +19,9 @@ val orxFeatures = setOf<String>(
 //    "orx-parameters",
 //    "orx-shade-styles",
 //    "orx-shader-phrases",
-//    "orx-shapes",
+    "orx-shapes",
 //    "orx-quadtree",
+    "orx-mesh-generators",
 )
 
 fun orx(module: String) = "org.openrndr.extra:$module:${libs.versions.orx.get()}"

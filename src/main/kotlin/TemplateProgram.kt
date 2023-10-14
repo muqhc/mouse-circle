@@ -9,8 +9,7 @@ import org.openrndr.extra.fx.blur.ApproximateGaussianBlur
 import org.openrndr.extra.fx.distort.HorizontalWave
 import org.openrndr.extra.fx.distort.VerticalWave
 import org.openrndr.extra.fx.shadow.DropShadow
-import org.openrndr.shape.Rectangle
-import org.openrndr.writer
+import org.openrndr.shape.*
 import kotlin.math.*
 
 val mainColor = ColorRGBa.ORANGE
@@ -18,7 +17,7 @@ val mainColor = ColorRGBa.ORANGE
 suspend fun main() = applicationAsync {
     program {
 
-        var drawPosition: Vector2? = null
+        var drawPosition: Vector2 = Vector2(0.0,0.0)
 
         mouse.moved.listen {
             drawPosition = it.position

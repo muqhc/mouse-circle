@@ -18,11 +18,11 @@ val myBackgroundColor: ColorRGBa = ColorRGBa.BLACK
 suspend fun main() = applicationAsync {
     program {
 
-        var drawPosition: Vector2 = Vector2(0.0,0.0)
+        var drawPosition: Vector2 = Vector2(width/2.0,height/2.0)
 
-        mouse.moved.listen {
-            drawPosition = it.position
-        }
+        //mouse.moved.listen {
+        //    drawPosition = it.position
+        //}
 
         val composite = compose {
             draw {

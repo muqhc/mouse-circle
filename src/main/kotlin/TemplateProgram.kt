@@ -13,6 +13,7 @@ import org.openrndr.shape.*
 import kotlin.math.*
 
 val mainColor = ColorRGBa.RED
+val backgroundColor = ColorRGBa.BLACK
 
 suspend fun main() = applicationAsync {
     program {
@@ -47,7 +48,7 @@ suspend fun main() = applicationAsync {
         }
 
         extend {
-            
+            composite.draw(drawer)
         }
     }
 }

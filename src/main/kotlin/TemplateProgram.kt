@@ -26,9 +26,9 @@ suspend fun main() = applicationAsync {
 
         val composite = compose {
             draw {
-                drawer.fill = myMainColor
+                drawer.fill = ColorRGBa.PINK
                 drawer.stroke = null
-                drawer.circle(drawPosition, 100.0)
+                drawer.circle(width / 2.0, height / 2.0, 175.0)
             }
             
             layer {
@@ -36,9 +36,9 @@ suspend fun main() = applicationAsync {
                     clip = true
                 }
                 draw {
-                    drawer.fill = myMainColor
+                    drawer.fill = ColorRGBa.PINK
                     drawer.stroke = null
-                    drawer.circle(drawPosition*(-1.0)+Vector2(width.toDouble(),height.toDouble()), 90.0)
+                    drawer.circle(width / 2.0, height / 2.0 + 100.0, 100.0)
                 }
                 post(ApproximateGaussianBlur()) {
                     window = 25

@@ -12,8 +12,8 @@ import org.openrndr.extra.fx.shadow.DropShadow
 import org.openrndr.shape.*
 import kotlin.math.*
 
-val mainColor: ColorRGBa = ColorRGBa.RED
-val backgroundColor: ColorRGBa = ColorRGBa.BLACK
+val myMainColor: ColorRGBa = ColorRGBa.RED
+val myBackgroundColor: ColorRGBa = ColorRGBa.BLACK
 
 suspend fun main() = applicationAsync {
     program {
@@ -26,7 +26,7 @@ suspend fun main() = applicationAsync {
 
         val composite = compose {
             draw {
-                drawer.fill = mainColor
+                drawer.fill = myMainColor
                 drawer.stroke = null
                 drawer.circle(drawPosition, 100.0)
             }
@@ -36,7 +36,7 @@ suspend fun main() = applicationAsync {
                     clip = true
                 }
                 draw {
-                    drawer.fill = mainColor
+                    drawer.fill = myMainColor
                     drawer.stroke = null
                     drawer.circle(drawPosition*(-1.0)+Vector2(width.toDouble(),height.toDouble()), 90.0)
                 }
@@ -48,7 +48,7 @@ suspend fun main() = applicationAsync {
         }
 
         extend {
-            drawer.clear(backgroundColor)
+            drawer.clear(myBackgroundColor)
             composite.draw(drawer)
         }
     }

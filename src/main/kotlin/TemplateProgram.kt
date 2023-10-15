@@ -49,7 +49,7 @@ suspend fun main() = applicationAsync {
 
         extend {
             drawer.clear(myBackgroundColor)
-            composite.draw(drawer)
+    
         }
     }
 }

@@ -12,8 +12,7 @@ import org.openrndr.extra.fx.shadow.DropShadow
 import org.openrndr.shape.*
 import kotlin.math.*
 
-val myMainColor: ColorRGBa get() = ColorRGBa.RED
-val myBackgroundColor: ColorRGBa get() = ColorRGBa.BLACK
+
 
 suspend fun main() = applicationAsync {
     program {
@@ -48,7 +47,7 @@ suspend fun main() = applicationAsync {
         }
 
         extend {
-            drawer.clear(myBackgroundColor)
+            drawer.clear(ColorRGBa.BLACK)
     
         }
     }

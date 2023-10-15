@@ -28,7 +28,7 @@ suspend fun main() = applicationAsync {
             draw {
                 drawer.fill = mainColor
                 drawer.stroke = null
-                drawer.circle(drawPosition, 175.0)
+                drawer.circle(drawPosition, 100.0)
             }
             
             layer {
@@ -38,7 +38,7 @@ suspend fun main() = applicationAsync {
                 draw {
                     drawer.fill = mainColor
                     drawer.stroke = null
-                    drawer.circle(drawPosition*(-1.0)+Vector2(width.toDouble(),height.toDouble()), 150.0)
+                    drawer.circle(drawPosition*(-1.0)+Vector2(width.toDouble(),height.toDouble()), 90.0)
                 }
                 post(ApproximateGaussianBlur()) {
                     window = 25
@@ -48,6 +48,7 @@ suspend fun main() = applicationAsync {
         }
 
         extend {
+            drawer.clear(backgroundColor)
             composite.draw(drawer)
         }
     }

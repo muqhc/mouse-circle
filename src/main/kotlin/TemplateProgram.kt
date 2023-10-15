@@ -12,8 +12,8 @@ import org.openrndr.extra.fx.shadow.DropShadow
 import org.openrndr.shape.*
 import kotlin.math.*
 
-val myMainColor: ColorRGBa = ColorRGBa.RED
-val myBackgroundColor: ColorRGBa = ColorRGBa.BLACK
+val myMainColor: ColorRGBa get() = ColorRGBa.RED
+val myBackgroundColor: ColorRGBa get() = ColorRGBa.BLACK
 
 suspend fun main() = applicationAsync {
     program {

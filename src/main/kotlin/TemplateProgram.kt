@@ -24,18 +24,28 @@ suspend fun main() = applicationAsync {
 
         extend {
             val myBackgroundColor = ColorRGBa.BLACK
+            val myBackgroundColorBase = ColorRGBa.WHITE
             val myPrimaryColor = rgb("#FC9601")
+            val myPrimaryColorBase = ColorRGBa.WHITE
+
             val windowSize = Vector2(width.toDouble(),height.toDouble())
+
+            val mouseDistanceFromCenter = mousePosition.distanceTo(windowSize/2.0)
+            val maxDistanceFromCenter = min(width,height).toDouble()/2.0
+            val distanceRate = min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter)
+
+            val mixedPrimary = mix(myPrimaryColorBase,myPrimaryColor,distanceRate)
+            val mixedBackground = mix(myBackgroundColorBase,myBackgroundColor,distanceRate)
 
             drawer.clear(myBackgroundColor)
 
             drawer.circles {
                 stroke = null
 
-                fill = myPrimaryColor
+                fill = mixedPrimary
                 circle(mousePosition,150.0)
 
-                fill = myBackgroundColor
+                fill = mixedBackground
                 circle(windowSize - mousePosition,140.0)
             }
         }

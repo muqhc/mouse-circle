@@ -26,16 +26,18 @@ suspend fun main() = applicationAsync {
             val myBackgroundColor = ColorRGBa.BLACK
             val myPrimaryColor = rgb("#FC9601")
             val windowSize = Vector2(width.toDouble(),height.toDouble())
-            
-            drawer.circles {
-                stroke = null
 
-                fill = myPrimaryColor
-                circle(mousePosition,150.0)
+            drawer.clear(myBackgroundColor)
 
-                fill = myBackgroundColor
-                circle(windowSize - mousePosition,150.0)
-            }
+            //drawer.circles {
+            //    stroke = null
+//
+            //    fill = myPrimaryColor
+            //    circle(mousePosition,150.0)
+//
+            //    fill = myBackgroundColor
+            //    circle(windowSize - mousePosition,150.0)
+            //}
         }
     }
 }

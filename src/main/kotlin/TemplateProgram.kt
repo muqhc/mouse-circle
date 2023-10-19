@@ -34,8 +34,8 @@ suspend fun main() = applicationAsync {
             val maxDistanceFromCenter = min(width,height).toDouble()/2.0
             val distanceRate = min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter)
 
-            val mixedPrimary = mix(myPrimaryColorBase,myPrimaryColor,distanceRate)
-            val mixedBackground = mix(myBackgroundColorBase,myBackgroundColor,distanceRate)
+            val mixedPrimary = mix(myPrimaryColor,myPrimaryColorBase,distanceRate)
+            val mixedBackground = mix(myBackgroundColor,myBackgroundColorBase,distanceRate)
 
             drawer.clear(mixedBackground)
 

@@ -37,7 +37,7 @@ suspend fun main() = applicationAsync {
             val mixedPrimary = mix(myPrimaryColorBase,myPrimaryColor,distanceRate)
             val mixedBackground = mix(myBackgroundColorBase,myBackgroundColor,distanceRate)
 
-            drawer.clear(myBackgroundColor)
+            drawer.clear(mixedBackground)
 
             drawer.circles {
                 stroke = null

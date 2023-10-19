@@ -33,8 +33,8 @@ suspend fun main() = applicationAsync {
             val mouseDistanceFromCenter = mousePosition.distanceTo(windowSize/2.0)
             val maxDistanceFromCenter = min(width,height).toDouble()/2.0
             val distanceRate = min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter)
-            val distanceRateSun = max(0.0,min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter + 0.1))
-            val distanceRateMoon = max(0.0,min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter - 0.1))
+            val distanceRateSun = max(0.0,min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter + 0.3))
+            val distanceRateMoon = max(0.0,min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter - 0.05))
 
             val mixedSun = mix(myPrimaryColor,myPrimaryColorBase,distanceRateSun)
             val mixedBackground = mix(myBackgroundColor,myBackgroundColorBase,distanceRate)

@@ -29,15 +29,15 @@ suspend fun main() = applicationAsync {
 
             drawer.clear(myBackgroundColor)
 
-            //drawer.circles {
-            //    stroke = null
-//
-            //    fill = myPrimaryColor
-            //    circle(mousePosition,150.0)
-//
-            //    fill = myBackgroundColor
-            //    circle(windowSize - mousePosition,150.0)
-            //}
+            drawer.circles {
+                stroke = null
+
+                fill = myPrimaryColor
+                circle(mousePosition,150.0)
+
+                fill = myBackgroundColor
+                circle(windowSize - mousePosition,150.0)
+            }
         }
     }
 }

@@ -33,19 +33,22 @@ suspend fun main() = applicationAsync {
             val mouseDistanceFromCenter = mousePosition.distanceTo(windowSize/2.0)
             val maxDistanceFromCenter = min(width,height).toDouble()/2.0
             val distanceRate = min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter)
+            val distanceRateSun = max(0.0,min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter + 0.1))
+            val distanceRateMoon = max(0.0,min(1.0,mouseDistanceFromCenter/maxDistanceFromCenter - 0.1))
 
-            val mixedPrimary = mix(myPrimaryColor,myPrimaryColorBase,distanceRate)
+            val mixedSun = mix(myPrimaryColor,myPrimaryColorBase,distanceRateSun)
             val mixedBackground = mix(myBackgroundColor,myBackgroundColorBase,distanceRate)
+            val mixedMoon = mix(myBackgroundColor,myBackgroundColorBase,distanceRateMoon)
 
             drawer.clear(mixedBackground)
 
             drawer.circles {
                 stroke = null
 
-                fill = mixedPrimary
+                fill = mixedSun
                 circle(mousePosition,150.0)
 
-                fill = mixedBackground
+                fill = mixedMoon
                 circle(windowSize - mousePosition,140.0)
             }
         }

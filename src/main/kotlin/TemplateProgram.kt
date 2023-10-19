@@ -36,7 +36,7 @@ suspend fun main() = applicationAsync {
                 circle(mousePosition,150.0)
 
                 fill = myBackgroundColor
-                circle(windowSize - mousePosition,150.0)
+                circle(windowSize - mousePosition,140.0)
             }
         }
     }

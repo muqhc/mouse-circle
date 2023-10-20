@@ -1,1 +1,1 @@
-rootProject.name = "openrndr-js-template"
+rootProject.name = "mouse-circle"

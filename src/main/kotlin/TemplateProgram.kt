@@ -22,6 +22,10 @@ suspend fun main() = applicationAsync {
             mousePosition = it.position
         }
 
+        mouse.dragged.listen {
+            mousePosition = it.position
+        }
+
         extend {
             val myBackgroundColor = ColorRGBa.BLACK
             val myBackgroundColorBase = ColorRGBa.WHITE

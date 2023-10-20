@@ -15,6 +15,10 @@ import kotlin.math.*
 
 
 suspend fun main() = applicationAsync {
+    configure {
+        title = "Mouse Circle"
+    }
+
     program {
         var mousePosition: Vector2 = Vector2(0.0,0.0)
 

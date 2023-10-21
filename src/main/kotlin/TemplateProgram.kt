@@ -39,6 +39,7 @@ suspend fun main() = applicationAsync {
             val myPrimaryColorBase = ColorRGBa.WHITE
 
             val windowSize = Vector2(width.toDouble(),height.toDouble())
+            val center = windowSize/2.0
 
             val mouseDistanceFromCenter = mousePosition.distanceTo(windowSize/2.0)
             val maxDistanceFromCenter = min(width,height).toDouble()/2.0
@@ -66,8 +67,11 @@ suspend fun main() = applicationAsync {
             drawer.fill = mixedBackgroundReversed
             drawer.writer {
                 newLine()
-                if (deskTrigger) if (distanceRate < 0.6) text("scroll down") else { deskTrigger = false }
-                else if (distanceRate > 0.4) text("here") else { deskTrigger = true }
+                var myText = ""
+                if (deskTrigger) if (distanceRate < 0.6) { myText = "scroll down" } else { deskTrigger = false }
+                else if (distanceRate > 0.4) { myText = "here" } else { deskTrigger = true }
+                move(center.x-(textWidth(myText)/2.0),center.y)
+                text(myText)
             }
         }
     }

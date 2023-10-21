@@ -66,14 +66,15 @@ suspend fun main() = applicationAsync {
             }
 
             drawer.fill = mixedBackgroundReversed
-            drawer.fontMap = FontImageMap.fromUrl("https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2",48.0)
+            //drawer.fontMap = FontImageMap.fromUrl("https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2",48.0)
             if (deskTrigger) if (distanceRate < 0.6) { myText = "scroll down" } else { deskTrigger = false }
             else if (distanceRate > 0.4) { myText = "here" } else { deskTrigger = true }
-            drawer.writer {
-                newLine()
-                move(center.x-(textWidth(myText)/2.0),center.y)
-                text(myText)
-            }
+            drawer.text(myText,center)
+            //drawer.writer {
+            //    newLine()
+            //    move(center.x-(textWidth(myText)/2.0),center.y)
+            //    text(myText)
+            //}
         }
     }
 }

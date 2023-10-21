@@ -1,7 +1,9 @@
 import org.openrndr.*
 import org.openrndr.color.*
+import org.openrndr.draw.*
 import org.openrndr.events.*
 import org.openrndr.math.*
+import org.openrndr.shape.*
 import org.openrndr.extra.compositor.*
 import org.openrndr.extra.fx.blend.Add
 import org.openrndr.extra.fx.blend.Normal
@@ -9,7 +11,6 @@ import org.openrndr.extra.fx.blur.ApproximateGaussianBlur
 import org.openrndr.extra.fx.distort.HorizontalWave
 import org.openrndr.extra.fx.distort.VerticalWave
 import org.openrndr.extra.fx.shadow.DropShadow
-import org.openrndr.shape.*
 import kotlin.math.*
 
 

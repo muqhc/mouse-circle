@@ -68,9 +68,11 @@ suspend fun main() = applicationAsync {
             drawer.fill = mixedBackgroundReversed
             if (deskTrigger) if (distanceRate < 0.6) { myText = "scroll down" } else { deskTrigger = false }
             else if (distanceRate > 0.4) { myText = "here" } else { deskTrigger = true }
-            drawer.text(myText,
-                center.x-(textWidth(myText)/2.0), center.y
-            )
+            drawer.writer {
+                newLine()
+                move(center.x-(textWidth(myText)/2.0),center.y)
+                text(myText)
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ suspend fun main() = applicationAsync {
 
     program {
         var mousePosition: Vector2 = Vector2(0.0,0.0)
+        var deskTrigger = false
 
         mouse.moved.listen {
             mousePosition = it.position
@@ -46,6 +47,7 @@ suspend fun main() = applicationAsync {
 
             val mixedSun = mix(myPrimaryColor,myPrimaryColorBase,distanceRateSun)
             val mixedBackground = mix(myBackgroundColor,myBackgroundColorBase,distanceRate)
+            val mixedBackgroundReversed = mix(myBackgroundColor,myBackgroundColorBase,1.0-distanceRate)
             val mixedMoon = mix(myBackgroundColor,myBackgroundColorBase,distanceRateMoon)
 
             drawer.clear(mixedBackground)
@@ -58,6 +60,13 @@ suspend fun main() = applicationAsync {
 
                 fill = mixedMoon
                 circle(windowSize - mousePosition,140.0)
+            }
+
+            drawer.fill = mixedBackgroundReversed
+            writer {
+                newLine()
+                if (deskTrigger) if (distanceRate < 0.6) text("scroll down") else { deskTrigger = false }
+                else if (distanceRate > 0.4) text("here") else { deskTrigger = true }
             }
         }
     }

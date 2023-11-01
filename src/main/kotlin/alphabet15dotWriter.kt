@@ -34,14 +34,13 @@ class Alphabet15dotWriter(val drawer: Drawer, val defaultStyle: A15DWriteStyle =
 
                         TODO("draw dot at (x,y)")
                     }
-                    else dl.toList().zipWithNext().forEach { (dFrom,dTo) ->
+                    else dL.toList().zipWithNext().forEach { (dFrom,dTo) ->
                         val (x1,y1) = separateOneDigit(dFrom)
                         val (x2,y2) = separateOneDigit(dTo)
                         
                         TODO("draw line from (x1,y1) to (x2,y2)")
                     }
                 }
-                val (x,y) = separateOneDigit()
             }
         }
     }

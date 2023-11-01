@@ -28,7 +28,7 @@ class Alphabet15dotWriter(val drawer: Drawer, val defaultStyle: A15DWriteStyle =
         }
         fun text(text: String) {
             text.toList().forEach { c ->
-                style.alphabet15dotMap.getOrDefault(c,alphabet15dotASCIIMap['$']!!).forEach { dL ->
+                (style.alphabet15dotMap[c] ?: alphabet15dotASCIIMap['$']!!).forEach { dL ->
                     if (dL.size == 1) {
                         val (x,y) = separateOneDigit(dL[0])
 

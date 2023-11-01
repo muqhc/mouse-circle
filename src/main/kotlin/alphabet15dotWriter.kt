@@ -14,7 +14,7 @@ fun alphabet15dotWriter(drawer: Drawer, defaultStyle: A15DWriteStyle = A15DWrite
 
 class A15DWriteStyle() {
     var scale: Double = 20.0
-    val weight: Double = 3.0
+    var weight: Double = 3.0
     var dotScale: Double = 0.7
     var charGap: Double = 1.0
     var lineGap: Double = 3.0
@@ -38,6 +38,8 @@ class Alphabet15dotWriter(val drawer: Drawer, val defaultStyle: A15DWriteStyle =
                 cursorY = value.y
             }
         
+        val textHeight: Double
+            get() = style.scale * 4
 
         fun textWidth(text: String): Double =
             if (text.length == 0) 0.0

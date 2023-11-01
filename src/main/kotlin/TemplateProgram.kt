@@ -60,7 +60,7 @@ suspend fun main() = applicationAsync {
             }
 
             if (deskTrigger) if (distanceRate < 0.6) { myText = "welcome" } else { deskTrigger = false }
-            else if (distanceRate > 0.4) { myText = "scroll down" } else { deskTrigger = true }
+            else if (distanceRate > 0.4) { myText = "scroll down" } else { deskTrigger = false }
 
             alphabet15dotWriter(drawer) {
                 newWriting {

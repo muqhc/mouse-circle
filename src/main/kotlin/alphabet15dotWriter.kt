@@ -8,46 +8,78 @@ import org.openrndr.extra.compositor.*
 import kotlin.math.*
 
 
+fun alphabet15dotWriter(drawer: Drawer, defaultStyle: A15DWriteStyle = A15DWriteStyle(), init: Alphabet15dotWriter.() -> Unit) {
+    Alphabet15dotWriter(drawer, defaultStyle).init()
+}
+
 class A15DWriteStyle() {
     var scale: Double = 20.0
-    var dotScale: Double = 1.3
+    val weight: Double = 3.0
+    var dotScale: Double = 0.7
     var charGap: Double = 1.0
     var lineGap: Double = 3.0
+    var color: ColorRGBa = ColorRGBa.BLACK
     var alphabet15dotMap = alphabet15dotASCIIMap
 }
 
 class Alphabet15dotWriter(val drawer: Drawer, val defaultStyle: A15DWriteStyle = A15DWriteStyle()) {
-    var header = -1
+
+    fun newWriting(style: A15DWriteStyle = defaultStyle, action: A15DLine.() -> Unit) {
+        A15DLine(style).action()
+    }
 
     inner class A15DLine(val style: A15DWriteStyle) {
         var cursorX = 0.0
         var cursorY = 0.0
+        var cursor: Vector2
+            get() = Vector2(cursorX,cursorY)
+            set(value) {
+                cursorX = value.x
+                cursorY = value.y
+            }
+        fun textWidth(text: String): Double = TODO("calculate length of text")
         fun move(x: Double, y: Double) {
             cursorX = x
             cursorY = y
         }
-        fun text(text: String) {
+        fun writeLine(text: String) {
+            val originCursorX = cursorX
             text.toList().forEach { c ->
                 (style.alphabet15dotMap[c] ?: alphabet15dotASCIIMap['$']!!).forEach { dL ->
                     if (dL.size == 1) {
                         val (x,y) = separateOneDigit(dL[0])
 
-                        TODO("draw dot at (x,y)")
+                        val rawPoint = Vector2(x.toDouble(), y.toDouble()) * style.scale
+                        val point = rawPoint + cursor
+
+                        drawer.apply {
+                            fill = style.color
+                            stroke = null
+                            circle(point, style.weight * style.dotScale)
+                        }
                     }
-                    else dL.toList().zipWithNext().forEach { (dFrom,dTo) ->
-                        val (x1,y1) = separateOneDigit(dFrom)
-                        val (x2,y2) = separateOneDigit(dTo)
-                        
-                        TODO("draw line from (x1,y1) to (x2,y2)")
+                    else {
+                        val dVL = dL.map {
+                            val (x,y) = separateOneDigit(it)
+                            Vector2(x.toDouble(), y.toDouble()) * style.scale + cursor
+                        }
+                        val con = ShapeContour.fromPoints(dVL, closed = false)
+                        drawer.apply {
+                            fill = null
+                            stroke = style.color
+                            strokeWeight = style.weight
+                            contour(con)
+                        }
                     }
                 }
+
+                cursorX += style.scale * (2 + style.charGap)
             }
+            cursorX = originCursorX
+            cursorY += style.scale * (4 + style.lineGap)
         }
     }
 
-    fun newLine(style: A15DWriteStyle = defaultStyle, action: A15DLine.() -> Unit) {
-        A15DLine(style).action()
-    }
 }
 
 

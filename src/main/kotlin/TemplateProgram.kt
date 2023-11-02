@@ -20,7 +20,7 @@ suspend fun main() = applicationAsync {
         var myText = ""
 
         val primaryMsg = "welcome"
-        val secondMsg = "here"
+        val secondMsg = "scroll down"
 
         mouse.moved.listen {
             mousePosition = it.position

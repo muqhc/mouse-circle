@@ -13,7 +13,7 @@ fun alphabet15dotWriter(drawer: Drawer, defaultStyle: A15DWriteStyle = A15DWrite
 }
 
 class A15DWriteStyle() {
-    var scale = Vector2(10.0,20.0)
+    var scale = Vector2(15.0,20.0)
     var weight: Double = 3.0
     var dotScale: Double = 0.7
     var charGap: Double = 1.0

@@ -19,6 +19,9 @@ suspend fun main() = applicationAsync {
         var deskTrigger = false
         var myText = ""
 
+        val primaryMsg = "welcome"
+        val secondMsg = "here"
+
         mouse.moved.listen {
             mousePosition = it.position
         }
@@ -59,12 +62,13 @@ suspend fun main() = applicationAsync {
                 circle(windowSize - mousePosition,140.0)
             }
 
-            if (deskTrigger) if (distanceRate < 0.6) { myText = "welcome" } else { deskTrigger = false }
-            else if (distanceRate > 0.4) { myText = "scroll down" } else { deskTrigger = false }
+            if (deskTrigger) if (distanceRate < 0.6) { myText = primaryMsg } else { deskTrigger = false }
+            else if (distanceRate > 0.4) { myText = secondMsg } else { deskTrigger = true }
 
             alphabet15dotWriter(drawer) {
                 newWriting {
                     style.color = ColorRGBa.PINK
+                    style.charGap = 0.6
                     move(center.x-(textWidth(myText)/2.0),center.y - (textHeight/2.0))
                     writeLine(myText)
                 }

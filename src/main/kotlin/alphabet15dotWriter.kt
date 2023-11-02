@@ -43,7 +43,7 @@ class Alphabet15dotWriter(val drawer: Drawer, val defaultStyle: A15DWriteStyle =
 
         fun textWidth(text: String): Double =
             if (text.length == 0) 0.0
-            else style.scale * ((text.length * 3) + ((text.length - 1) * style.charGap))
+            else style.scale * ((text.length * 2) + ((text.length - 1) * style.charGap))
 
         fun move(x: Double, y: Double) {
             cursorX = x

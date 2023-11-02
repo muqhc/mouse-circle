@@ -39,7 +39,7 @@ class Alphabet15dotWriter(val drawer: Drawer, val defaultStyle: A15DWriteStyle =
             }
         
         val textHeight: Double
-            get() = style.scale * 4
+            get() = style.scale.y * 4
 
         fun textWidth(text: String): Double =
             if (text.length == 0) 0.0

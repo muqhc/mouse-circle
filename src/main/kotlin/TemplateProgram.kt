@@ -67,7 +67,7 @@ suspend fun main() = applicationAsync {
 
             alphabet15dotWriter(drawer) {
                 newWriting {
-                    style.color = ColorRGBa.PINK
+                    style.color = ColorRGBa.GRAY
                     style.charGap = 0.6
                     move(center.x-(textWidth(myText)/2.0),center.y - (textHeight/2.0))
                     writeLine(myText)

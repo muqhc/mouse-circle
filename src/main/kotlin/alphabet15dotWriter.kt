@@ -13,7 +13,7 @@ fun alphabet15dotWriter(drawer: Drawer, defaultStyle: A15DWriteStyle = A15DWrite
 }
 
 class A15DWriteStyle() {
-    var scale: Double = 20.0
+    var scale = Vector2(10.0,20.0)
     var weight: Double = 3.0
     var dotScale: Double = 0.7
     var charGap: Double = 1.0
@@ -43,7 +43,7 @@ class Alphabet15dotWriter(val drawer: Drawer, val defaultStyle: A15DWriteStyle =
 
         fun textWidth(text: String): Double =
             if (text.length == 0) 0.0
-            else style.scale * ((text.length * 2) + ((text.length - 1) * style.charGap))
+            else style.scale.x * ((text.length * 2) + ((text.length - 1) * style.charGap))
 
         fun move(x: Double, y: Double) {
             cursorX = x
@@ -81,10 +81,10 @@ class Alphabet15dotWriter(val drawer: Drawer, val defaultStyle: A15DWriteStyle =
                     }
                 }
 
-                cursorX += style.scale * (2 + style.charGap)
+                cursorX += style.scale.x * (2 + style.charGap)
             }
             cursorX = originCursorX
-            cursorY += style.scale * (4 + style.lineGap)
+            cursorY += style.scale.y * (4 + style.lineGap)
         }
     }
 

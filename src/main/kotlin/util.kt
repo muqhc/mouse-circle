@@ -18,8 +18,8 @@ fun separateDigit(num: Int): List<Int> = sequence {
     }
 }.toList().reversed()
 
-fun String.getUrlParamMap() =
-    split('?').getOrNull(1)?.split('&')?.associate {
+fun getUrlParamMap(url: String) =
+    url.split('?').getOrNull(1)?.split('&')?.associate {
         val parts = it.split('=')
         val name = parts[0]
         val value = parts[1]

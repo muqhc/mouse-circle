@@ -20,7 +20,7 @@ suspend fun main() = applicationAsync {
         var myText = ""
 
         val urlString = js("window.location.search")
-        val paramMap = urlString.getUrlParamMap()
+        val paramMap = getUrlParamMap(urlString)
 
         val primaryMsg = paramMap["primary"] ?: "welcome"
         val secondMsg = paramMap["second"] ?: "scroll down"

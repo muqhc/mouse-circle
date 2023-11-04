@@ -74,6 +74,7 @@ suspend fun main() = applicationAsync {
                     style.color = ColorRGBa.GRAY
                     style.charGap = 0.6
                     style.scale = defaultStyle.scale * scalePreset
+                    style.weight = defaultStyle.weight * scalePreset
                     move(center.x-(textWidth(myText)/2.0),center.y - (textHeight/2.0))
                     writeLine(myText)
                 }

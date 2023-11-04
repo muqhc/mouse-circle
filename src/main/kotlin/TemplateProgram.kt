@@ -24,6 +24,7 @@ suspend fun main() = applicationAsync {
 
         val primaryMsg = paramMap["primary"] ?: "welcome"
         val secondMsg = paramMap["second"] ?: "scroll down"
+        val scalePreset = js("parseFloat(${paramMap["scale"]})") ?: 1.0
 
         mouse.moved.listen {
             mousePosition = it.position
@@ -59,10 +60,10 @@ suspend fun main() = applicationAsync {
                 stroke = null
 
                 fill = mixedSun
-                circle(mousePosition,150.0)
+                circle(mousePosition,150.0*scalePreset)
 
                 fill = mixedMoon
-                circle(windowSize - mousePosition,140.0)
+                circle(windowSize - mousePosition,140.0*scalePreset)
             }
 
             if (deskTrigger) if (distanceRate < 0.6) { myText = primaryMsg } else { deskTrigger = false }
@@ -72,6 +73,7 @@ suspend fun main() = applicationAsync {
                 newWriting {
                     style.color = ColorRGBa.GRAY
                     style.charGap = 0.6
+                    style.scale = defaultStyle.scale * scalePreset
                     move(center.x-(textWidth(myText)/2.0),center.y - (textHeight/2.0))
                     writeLine(myText)
                 }

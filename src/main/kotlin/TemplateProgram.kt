@@ -24,7 +24,7 @@ suspend fun main() = applicationAsync {
 
         val primaryMsg = paramMap["primary"] ?: "welcome"
         val secondMsg = paramMap["second"] ?: "scroll down"
-        val scalePreset = js("parseFloat(${paramMap["scale"]})") ?: 1.0
+        val scalePreset: Double = js("parseFloat(${paramMap["scale"]})") ?: 1.0
 
         mouse.moved.listen {
             mousePosition = it.position

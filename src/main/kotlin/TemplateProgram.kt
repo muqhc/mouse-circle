@@ -19,8 +19,11 @@ suspend fun main() = applicationAsync {
         var deskTrigger = false
         var myText = ""
 
-        val primaryMsg = "welcome"
-        val secondMsg = "scroll down"
+        val urlString = js("window.location.search")
+        val paramMap = urlString.getUrlParamMap()
+
+        val primaryMsg = paramMap["primary"] ?: "welcome"
+        val secondMsg = paramMap["second"] ?: "scroll down"
 
         mouse.moved.listen {
             mousePosition = it.position

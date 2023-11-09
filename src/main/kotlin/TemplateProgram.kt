@@ -4,7 +4,7 @@ import org.openrndr.draw.*
 import org.openrndr.events.*
 import org.openrndr.math.*
 import org.openrndr.shape.*
-import org.openrndr.extra.compositor.*
+import org.openrndr.extra.noclear.NoClear
 import kotlin.math.*
 
 
@@ -15,6 +15,9 @@ suspend fun main() = applicationAsync {
     }
 
     program {
+        var lastInterected = 0.0
+        var isInteracted = false
+
         var deskTrigger = false
         var myText = ""
 
@@ -25,8 +28,22 @@ suspend fun main() = applicationAsync {
         val secondMsg = paramMap["second"] ?: "scroll down"
         val scalePreset: Double = paramMap["scale"]?.toDoubleOrNull() ?: 1.0
 
+        mouse.moved.listen {
+            isInteracted = true
+        }
+
+        extend(NoClear())
+
         extend {
+            if (isInteracted) {
+                lastInterected = seconds
+                isInteracted = false
+            }
+
+            if ((seconds - lastInterected) > 0.5) return@extend
+
             val mousePosition = mouse.position
+
             val myBackgroundColor = ColorRGBa.BLACK
             val myBackgroundColorBase = ColorRGBa.WHITE
             val myPrimaryColor = rgb("#FC9601")

@@ -15,7 +15,6 @@ suspend fun main() = applicationAsync {
     }
 
     program {
-        var mousePosition: Vector2 = Vector2(0.0,0.0)
         var deskTrigger = false
         var myText = ""
 
@@ -26,16 +25,8 @@ suspend fun main() = applicationAsync {
         val secondMsg = paramMap["second"] ?: "scroll down"
         val scalePreset: Double = paramMap["scale"]?.toDoubleOrNull() ?: 1.0
 
-        mouse.moved.listen {
-            mousePosition = it.position
-        }
-
-        mouse.dragged.listen {
-            mousePosition = it.position
-        }
-
         extend {
-            mousePosition = mouse.position
+            val mousePosition = mouse.position
             val myBackgroundColor = ColorRGBa.BLACK
             val myBackgroundColorBase = ColorRGBa.WHITE
             val myPrimaryColor = rgb("#FC9601")

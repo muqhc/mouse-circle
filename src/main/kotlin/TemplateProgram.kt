@@ -35,6 +35,7 @@ suspend fun main() = applicationAsync {
         }
 
         extend {
+            mousePosition = mouse.position
             val myBackgroundColor = ColorRGBa.BLACK
             val myBackgroundColorBase = ColorRGBa.WHITE
             val myPrimaryColor = rgb("#FC9601")
